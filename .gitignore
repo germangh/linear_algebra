@@ -1,0 +1,4 @@
+# Compiled Latex sources
+*.dvi
+tex/*.pdf
+references/*
