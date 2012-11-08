@@ -1,0 +1,11 @@
+\frametitle {How does regularization affect the solution?}
+
+Regularization allows a numerical solution for \emph{ill-conditioned} linear systems, at the expense of giving preference to certain solutions.
+
+\vspace{.5cm}
+If regularization is based on valid a-priori information on the true solution, it enables a numerical solution of an otherwise unsolvable \emph{inverse problem}.
+
+\vspace{.5cm}
+If a too harsh regularization is used or if it is based on wrong a-priori information, it can lead to a numerically stable but completely wrong solution.
+
+
