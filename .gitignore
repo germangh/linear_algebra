@@ -11,6 +11,8 @@ tex/*.pdf
 *.toc
 *.snm
 *.vrb
+*.out
+*.syntex.gz
 
 # Backups
 ~*

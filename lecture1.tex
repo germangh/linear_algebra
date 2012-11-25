@@ -952,7 +952,7 @@ for some suitably chosen regularization matrix $\black{\Gammam}$.
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% HOW DOES REGULARIZATION AFFECT THE SOLUTION?
 
 \begin{frame}[fragile]
 \frametitle{How does regularization affect the solution?}
@@ -969,7 +969,147 @@ If a too harsh regularization is used or if it is based on wrong a-priori inform
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%% MATRICES AND LINEAR INDEPENDENCE
+%%%%%%%%%%%%%%%%% THE CONDITIONING OF A MATRIX IS NOT ALWAY CLEAR-CUT
+
+\begin{frame}[fragile]
+\frametitle{The conditioning of a matrix is not always clear cut}
+
+Sometimes it is:
+
+\beq{
+\A = 
+\left[
+	\begin{array}{rrr}
+	9 & 9 & 0\\
+	2 & 5 & -3\\
+	9 & 8 & 1\\
+	\end{array}
+\right]
+}
+
+Notice that $\black{\a_3=\a_1-\a_2}$. Indeed, in MATLAB we get:
+
+\begin{verbatim}
+>> rank(A)
+
+ans =
+
+     2
+\end{verbatim}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%% THE CONDITIONING OF A MATRIX IS NOT ALWAY CLEAR-CUT (cont'd)
+
+\begin{frame}[fragile]
+\frametitle{The conditioning of a matrix is not always clear cut}
+
+But most often it is not:
+
+\beq{
+\B = 
+\left[
+	\begin{array}{rrr}
+	9 & 9 & 0.001\\
+	2 & 5 & -3.001\\
+	9 & 8 & 1.001\\
+	\end{array}
+\right]
+}
+
+In MATLAB we get:
+
+\begin{verbatim}
+>> rank(B)
+
+ans =
+
+     3
+\end{verbatim}
+
+Can we conclude that $\black{\A}$  is ill-conditioned but $\black{\B}$ is not?
+
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%  THE CONDITION NUMBER OF A MATRIX
+\begin{frame}[fragile]
+\frametitle{The condition number of a matrix}
+
+Matrix conditioning is characterized by the condition number:
+
+\color{black}
+\begin{verbatim}
+>> cond(A)
+ans =
+
+   1.8076e+16
+   
+>> cond(B)
+ans =
+
+   1.1644e+05
+\end{verbatim}
+
+\color{gray}
+
+The condition number ranges from \black{1} (the identity matrix) to \black{Inf} (any matrix with linearly dependent columns, e.g. $\black{\A}$).
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%  WHAT DOES THE CONDITION NUMBER TELLS US?
+\begin{frame}[fragile]
+\frametitle{What does the condition number tells us?}
+
+From \black{\href{http://en.wikipedia.org/wiki/Condition\_number}{Wikipedia}}:
+
+\vspace{.3cm}
+
+\textit{\small{''the condition number of a function with respect to an argument measures the worst case of how much the function can change in proportion to small changes in the argument"}} 
+
+\onslide<2->
+
+\vspace{.2cm}
+The functions we are interested in are:
+
+\beq{
+\A\x = \b
+}
+
+\beq{
+\x = \A^{-1}\b
+}
+
+Where $\black{\x}$ might be the tiny brain currents in the brain tissue, and $\black{\b}$ might be the associated scalp potentials.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%  CONCLUSIONS ABOUT THE COND NUMBER
+\begin{frame}[fragile]
+\frametitle{What are the implications for M/EEG source modeling?}
+
+If the matrix that maps brain currents to scalp potentials is ill-conditioned then:
+
+\vspace{.4cm}
+
+\begin{itemize}
+
+\item \black{Tiny changes in the brain currents (e.g. simply due to the stochastic nature of brain activity) will produce large changes in the measured potentials}
+
+\vspace{.2cm}
+
+\item \black{Tiny changes in the measured scalp potentials (e.g. due to electrical noise) will lead to largely different inverse M/EEG solutions}
+
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% REFERENCES
 
 \section{References}
 \subsection*{}
@@ -991,10 +1131,6 @@ Some images are from Wikipedia:
 
 \vspace{.5cm}
 \black{\url{http://en.wikipedia.org/wiki/System_of_linear_equations}}
-
-
-
-
 
 
 \end{frame}
