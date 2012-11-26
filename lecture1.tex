@@ -4,6 +4,7 @@
 \usetheme{ninscwhite}
 
 \usepackage{hyperref}
+\hypersetup{linkcolor=blue} 
 
 \title{Fundamentals of linear algebra}
 \author{Germ{\'a}n G{\'o}mez-Herrero}
@@ -508,6 +509,9 @@ A set of vectors $\black{\v_1}$, $\black{\v_2}$, $\black{\v_3}$ are \emph{linear
 \v_i \neq \alpha\v_j + \beta\v_k \qquad  \forall \alpha \quad \forall \beta \quad \forall i\neq j \neq k
 }
 
+\vspace{2cm}
+
+\tiny{\black{Note:} If you don't know what a linear combination is, \href{http://en.wikipedia.org/wiki/Linear_combination}{click here}.}
 
 
 \end{frame}
@@ -675,6 +679,12 @@ If we knew $\black{\A^{-1}}$, how could we use it to solve $\black{\A\x=\b}$ ?
 
 \begin{frame}
 \frametitle{Invertible systems / Invertible matrices}
+
+\tiny{\black{Note:} Realize that $\black{\M\I=\I\M=\M}$ and $\black{\b\I=\I\b=\b}$ for any matrix $\black{\M}$ and for any vector $\black{\b}$}
+
+\vspace{.5cm}
+
+\small
 
 Given a system of equations $\black{\A\x=\b}$ with $\black{\A}$ square then: 
 
@@ -884,7 +894,7 @@ with $\black{\hat{\x}}$ being:
 
 \begin{itemize}
 \item The Least Squares solution if $\black{m > n}$
-\item The Minimum Norm solution if $\black{m < m}$
+\item The Minimum Norm solution if $\black{m < n}$
 \item The exact solution if $\black{m=n}$
 \end{itemize}
 
@@ -894,6 +904,8 @@ $\black{\A^+}$ is the \emph{pseudoinverse} of $\black{\A}$, and can be easily ob
 \beq{
 \A^+ = \left(\A^T\A\right)^{-1}\A^T
 }
+
+\tiny{\black{Note:} $\black{\A^T}$ denotes the transpose of matrix $\black{\A}$. See \href{http://en.wikipedia.org/wiki/Transpose}{wikipedia.}}
 
 
 \end{frame}
@@ -996,6 +1008,8 @@ ans =
 
      2
 \end{verbatim}
+
+\tiny{\black{Note:} MATLAB's command \verb|rank| tells us the number of linearly independent columns of a matrix. You can also check that the determinant of this matrix is zero using command \verb|det|.} 
 
 \end{frame}
 
